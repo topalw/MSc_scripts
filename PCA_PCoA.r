@@ -35,7 +35,7 @@
     EV4=pca$eigenvect[,4],
     stringsAsFactors = FALSE)
   
-#plotting cute plots is a MUST
+#plotting 
   mytheme <- theme(panel.background = element_rect(fill = "white", colour = "black",size = 2),
                    panel.grid.major = element_blank(),
                    legend.title = element_blank(),
@@ -73,7 +73,7 @@ for (i in 2:4){
   pca.dist$sample.id <- b$sample.id
   pca.dist$pop <- pops[order(pops)]
   
-#cute plotting is the only option
+#plotting
   
 for(i in 2:4){
   tmp <- paste(V,i,sep = '')
