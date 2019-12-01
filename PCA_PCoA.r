@@ -76,7 +76,7 @@ for (i in 2:4){
 #plotting
   
 for(i in 2:4){
-  tmp <- paste(V,i,sep = '')
+  tmp <- paste('V',i,sep = '')
   dist_plot <- ggplot(pca.dist, aes(x=V1, y=tmp, colour=pca.dist$pop)) + geom_point(size=6)+ mytheme + 
     geom_text(label=pca.dist$sample.id, size=4, hjust=1.5,vjust=1.5)
   yname <- paste('PC', i, sep = '')
@@ -84,6 +84,6 @@ for(i in 2:4){
   
   jpeg(file=file_name, width = 809, height = 1024)
   dist_plot + labs(y=yname , x='PC1', colour='Populations') 
-  dev.off
+  dev.off()
 }
   
