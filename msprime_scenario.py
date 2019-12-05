@@ -3,13 +3,6 @@ import msprime
 import math
 
 def simple_sim():
-	names = []
-	for i in range(1,11):
-		names.append('main' + str(i))
-	for i in range(1,11):
-		names.append('CR' + str(i))
-	for i in range(1,11):
-		names.append('CY' + str(i))
 	Nmain = 10000
 	NCR = 4000
 	NCY = 5000
