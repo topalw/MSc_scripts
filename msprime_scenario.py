@@ -6,17 +6,17 @@ def simple_sim():
 	Nmain = 20000
 	NCR = 4000
 	NCY = 5000
-	gen = 3		# as in Altwegg et al 2006
-	t1 = 7000	#3.6 x 5500 = 19800 yago
-	t2 = 7200	#= 21600 years ago
-	t3 = 20000	#= 70200 years ago
-	t4 = 20200	#+1800 years ago == 500 gens 
+	gen = 3		
+	t1 = 7000	
+	t2 = 7200	#= split
+	t3 = 20000
+	t4 = 20200	#= split 
 	growth_CY = 0.018444		#growth reflects only starting size - final size in exp growth
 	growth_CR = 0.019560
 	m = 1e-4	# to force mainland to island
-	r = 1e-8	# 1 per gen per chr
-	length = 5e+8	#chr 
-	mu = 2.5e-8	# as in Ellegren 2016 paper
+	r = 1e-8	# 5 per gen per chr
+	length = 5e+8	# length of chr 
+	mu = 2.5e-8	# as in Ellegren 2016 paper but bigger by 10
 	population_configurations = [
 		msprime.PopulationConfiguration( sample_size = 2, initial_size = Nmain ),
 		msprime.PopulationConfiguration( sample_size = 2, initial_size = NCR ),
