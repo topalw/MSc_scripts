@@ -21,15 +21,7 @@ A cool way to check that the population-specific alleles function is correct, is
 
 Another important fact for begginers (like me) in SNPRelate is that the sample_id order is the same as the sample order in the vcf file that was used to produce the gds. To check that just 
 ```shell 
-grep '^#CHROM' your.vcf
-``` 
-and Ctrl+C when the line appears (this is faster than 
-```shell 
 grep '^#CHROM' your.vcf | head -1
-```
-as the latter continues to go through the vcf to find more matches). If you have a vcf.gz then simply 
-```shell 
-zcat your.vcf.gz | grep '^#CHROM'
-```
+``` 
 
 Best
