@@ -10,8 +10,8 @@
   #open files and get samples, populations
   genofile <- snpgdsOpen(path_to_gds)
   popinfo <- read.delim(ind_pop,sep='\t')
-  samples <- popinfo$V1
-  pops <- popinfo$V2
+  samples <- popinfo[,1]
+  pops <- popinfo[,2]
   
   #do the pca
   pca <- snpgdsPCA(genofile, autosome.only = F)
@@ -22,10 +22,11 @@
   
   #parcoord plot
   tmp <- pops[match(pca$sample.id,samples)]
+  jpeg('parcoord.jpeg',height=1240,width=1920)
   parcoord(pca$eigenvect[,1:10],col=tmp)
   title(main='')
   legend(legend= levels(tmp), col = 1:nlevels(tmp))
-  
+  dev.off()
   #create dataframe with 4 first PCs as in SNPRelate tutorial
   tab <- data.frame(sample.id=pca$sample.id, 
     pop=factor(pops)[match(pca$sample.id, samples)],
@@ -49,7 +50,7 @@ for (i in 2:4){
   
   new_title <- paste('corrPCA_PC1-PC', i, '.jpeg',sep='') #file title
   #file
-  jpeg(file = new_title, width = 809, height = 1024)
+  jpeg(file = new_title, width = 2440, height = 1920)
   #axis labels with variance explained
   xname <- paste('PC1-', variance_explained[1], sep = '')
   yname <- paste('PC', i, '-', variance_explained[i], sep = '')
@@ -60,7 +61,7 @@ for (i in 2:4){
   
 #Distance PCoA
   Inbreeding <- snpgdsIndivBeta(genofile, autosome.only = F)
-  b <- snpgdsIndivBetaRel(Inbreeding, min(Inbreeding$beta))
+  b <- snpgdsIndivBetaRel(Inbreeding, mean(Inbreeding$beta))
   tmp <- b$beta[order(b$sample.id), order(b$sample.id)]     #ordered beta table
   #from beta to distances as in Hierfstat
   diag(tmp) <- NA
@@ -82,7 +83,7 @@ for(i in 2:4){
   yname <- paste('PC', i, sep = '')
   file_name <- paste('distPCoA_PC1-PC', i, '.jpeg', sep='')
   
-  jpeg(file=file_name, width = 809, height = 1024)
+  jpeg(file=file_name, width = 2440, height = 1920)
   dist_plot + labs(y=yname , x='PC1', colour='Populations') 
   dev.off()
 }
